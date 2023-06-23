@@ -1,5 +1,4 @@
 #include "sort.h"
-#include <stdio.h>
 
 /**
  * insertion_sort_list - does insertion sort on doubly linked list
@@ -16,8 +15,6 @@ void insertion_sort_list(listint_t **list)
 	listint_t *count;
 	int len = 0;
 
-	if (*list == NULL)
-		return;
 	count = *list;
 	while (count)
 	{
@@ -27,7 +24,7 @@ void insertion_sort_list(listint_t **list)
 
 	if (len >= 2)
 	{
-		temp = *list;
+		temp = (*list)->next;
 
 		while (temp)
 		{
@@ -38,7 +35,7 @@ void insertion_sort_list(listint_t **list)
 				{
 					current = temp;
 					prev = temp2;
-					insert(list, current, prev);
+					swap(list, current, prev, &len);
 					print_list(*list);
 				}
 				temp2 = temp2->prev;
@@ -48,16 +45,25 @@ void insertion_sort_list(listint_t **list)
 	}
 }
 /**
- * insert - insert src immediately before dest
+ * swap - insert src immediately before dest
  * @head: head of the linked list
  * @src: node to insert
  * @dest: src will be inserted just before dest node
+ * @len: length of the list
  *
  * Return: void
  */
-void insert(listint_t **head, listint_t *src, listint_t *dest)
+void swap(listint_t **head, listint_t *src, listint_t *dest, int *len)
 {
-	if (dest->prev == NULL)
+	if (*len == 2)
+	{
+		src->next = dest;
+		src->prev = NULL;
+		dest->next = NULL;
+		dest->prev = src;
+		(*head) = src;
+	}
+	else if (dest->prev == NULL)
 	{
 		(src->prev)->next = src->next;
 		(src->next)->prev = src->prev;

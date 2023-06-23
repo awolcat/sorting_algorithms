@@ -3,7 +3,7 @@
 /**
  * selection_sort - sort an array with selection sort algo
  * @array: the array to sort
- * size: length of the array
+ * @size: length of the array
  *
  * Return: void
  */

@@ -16,6 +16,8 @@ void insertion_sort_list(listint_t **list)
 	int len = 0;
 
 	count = *list;
+	if (!list || !*list)
+		return;
 	while (count)
 	{
 		len += 1;

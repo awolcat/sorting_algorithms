@@ -60,15 +60,10 @@ size_t partition(int *arr, size_t lb, size_t ub, size_t *len)
 		{
 			trailer += 1;
 			swap_arr(&arr[start], &arr[trailer]);
-			if (trailer != start)
-			{
-				print_array(arr, *len);
-			}
+			print_array(arr, *len);
 		}
 	}
 	swap_arr(&arr[ub], &arr[trailer + 1]);
-	if ((start + 1) != ub)
-		print_array(arr, *len);
 	return (trailer + 1);
 }
 /**

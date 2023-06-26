@@ -22,7 +22,7 @@ void insertion_sort_list(listint_t **list)
 		count = count->next;
 	}
 
-	if (len >= 2)
+	if (*list && len >= 2)
 	{
 		temp = (*list)->next;
 

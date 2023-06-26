@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 
 /**
  * quick_sort - sort an array
@@ -33,6 +34,7 @@ void quick_sort_r(int *array, int lb, int ub, size_t *len)
 		pivot = partition(array, lb, ub, len);
 		quick_sort_r(array, lb, pivot - 1, len);
 		quick_sort_r(array, pivot + 1, ub, len);
+
 	}
 }
 
@@ -52,17 +54,20 @@ size_t partition(int *arr, size_t lb, size_t ub, size_t *len)
 	size_t trailer = lb - 1;
 	size_t start;
 
+	(void)len;
 	for (start = lb; start < ub; start++)
 	{
-		if (arr[start] < pivot)
+		if (arr[start] <= pivot)
 		{
 			trailer += 1;
 			swap_arr(&arr[start], &arr[trailer]);
-			if (ub == *len - 1)
-				print_array(arr, ub + 1);
+			if (trailer != start)
+				print_array(arr, *len);
 		}
 	}
 	swap_arr(&arr[ub], &arr[trailer + 1]);
+	if ((start + 1) != ub)
+		print_array(arr, *len);
 	return (trailer + 1);
 }
 /**

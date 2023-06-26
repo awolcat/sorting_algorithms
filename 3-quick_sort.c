@@ -64,8 +64,11 @@ size_t partition(int *arr, size_t lb, size_t ub, size_t *len)
 				print_array(arr, *len);
 		}
 	}
-	swap_arr(&arr[ub], &arr[trailer + 1]);
-	print_array(arr, *len);
+	if (arr[trailer + 1] > arr[ub])
+	{
+		swap_arr(&arr[ub], &arr[trailer + 1]);
+		print_array(arr, *len);
+	}
 	return (trailer + 1);
 }
 /**

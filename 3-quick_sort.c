@@ -14,6 +14,7 @@ void quick_sort(int *array, size_t size)
 	if (array == NULL || size <= 1)
 		return;
 	quick_sort_r(array, 0, size - 1, &size);
+	print_array(array, size);
 }
 
 /**
@@ -52,21 +53,23 @@ size_t partition(int *arr, size_t lb, size_t ub, size_t *len)
 {
 	int pivot = arr[ub];
 	size_t trailer = lb - 1;
-	size_t start;
+	size_t start, tmp;
 
-	(void)len;
 	for (start = lb; start < ub; start++)
 	{
-		if (arr[start] <= pivot)
+		if (arr[start] < pivot)
 		{
 			trailer += 1;
 			swap_arr(&arr[start], &arr[trailer]);
 			if (trailer != start)
+			{
 				print_array(arr, *len);
+				tmp = trailer;
+			}
 		}
 	}
 	swap_arr(&arr[ub], &arr[trailer + 1]);
-	if ((start + 1) != ub)
+	if ((start + 1) != ub && tmp != trailer)
 		print_array(arr, *len);
 	return (trailer + 1);
 }

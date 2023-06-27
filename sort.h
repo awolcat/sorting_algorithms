@@ -32,4 +32,7 @@ void quick_sort(int *array, size_t size);
 void quick_sort_r(int *array, int lb, int ub, size_t *len);
 size_t partition(int *arr, size_t lb, size_t ub, size_t *len);
 void swap_arr(int *arr_1, int *arr_2);
+/* merge sort */
+void merge(int *left, int *right, int *array);
+void merge_sort(int *array, size_t size);
 #endif

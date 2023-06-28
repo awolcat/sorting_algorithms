@@ -15,9 +15,9 @@ void insertion_sort_list(listint_t **list)
 	listint_t *count;
 	int len = 0;
 
-	count = *list;
 	if (!list || !*list)
 		return;
+	count = *list;
 	while (count)
 	{
 		len += 1;
